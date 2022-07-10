@@ -4,9 +4,6 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.OptionalDouble;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,10 +19,6 @@ public class Main {
         peopleList.add(new People("Sergey",25,'M'));
         peopleList.add(new People("Marik",18,'M'));
         peopleList.add(new People("Arina",19,'F'));
-
-        //for (People people : peopleList) {
-        //   System.out.printf("%s is %s y.o. and %s\n",people.getName(),people.getAge(),people.getSex());
-        //}
 
         //1. Вибрати чоловіків-військовозобов'язаних (від 18 до 27 років)
         peopleList.stream()
@@ -90,8 +83,9 @@ public class Main {
 
         //10. Вивеcти всіх жінок в яких ім’я починається на “A”
         peopleList.stream()
-                .filter(people -> people.getName().startsWith("A"))
-                .forEach(people -> System.out.println(people.getName()));
+                .map(People::getName)
+                .filter(people -> people.startsWith("A"))
+                .forEach(System.out::println);
         System.out.println("===========================================");
     }
 }
